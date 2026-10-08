@@ -1,0 +1,4396 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Digital__Hana__Arts® — デジタル・ハナ・アーツ。芸術・データ・人工知能・ブロックチェーンを横断する計算的創造性。日本的伝統とポスト・ポストモダンの対話。"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0a0a0a"
+    >
+
+    <meta
+        property="og:title"
+        content="Digital__Hana__Arts® — 花"
+    >
+
+    <meta
+        property="og:description"
+        content="芸術 × データ × 知能 × ブロックチェーン × 間"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:image"
+        content="assets/DHA_logo.png"
+    >
+
+    <title>
+        DHA® — [花・計算芸術]
+    </title>
+
+
+    <!-- =====================================================
+         フォント
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           DHA — 日本的抽象プロトコル v3.0
+           侘寂 · 間 · 金継ぎ · 円相
+        ====================================================== */
+
+        :root {
+
+            /* 墨 — ink */
+            --sumi: #0a0a0a;
+            --sumi-2: #121212;
+            --sumi-3: #1a1a1a;
+            --sumi-4: #232323;
+
+            /* 和紙 — paper */
+            --washi: #f4efe4;
+            --washi-2: #e8e0d0;
+            --washi-3: #d8cfbb;
+
+            /* 金 — kintsugi gold */
+            --kin: #c9a961;
+            --kin-bright: #e6c877;
+            --kin-dim: #8a7440;
+            --kin-faint: rgba(201,169,97,.18);
+            --kin-line: rgba(201,169,97,.35);
+
+            /* 朱 — hinomaru / vermillion */
+            --shu: #bc002d;
+            --shu-soft: #c1272d;
+            --shu-dim: #7a0018;
+
+            /* 藍 — indigo */
+            --ai: #1e3a5f;
+            --ai-soft: #2c4a72;
+
+            /* 抹茶 — matcha */
+            --matcha: #6b7d4c;
+
+            /* 桜 — sakura */
+            --sakura: #e8b4b8;
+
+            /* 灰 — ash */
+            --ash: #8a8a8a;
+            --ash-dim: #5a5a5a;
+            --smoke: #333333;
+
+            --border-ink: rgba(244,239,228,.14);
+            --border-gold: rgba(201,169,97,.35);
+
+            --max-width: 1400px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--sumi);
+        }
+
+
+        body {
+
+            background: var(--sumi);
+
+            color: var(--washi);
+
+            font-family:
+                "Noto Sans JP",
+                "Zen Kaku Gothic New",
+                system-ui,
+                sans-serif;
+
+            font-weight: 300;
+
+            line-height: 1.9;
+
+            overflow-x: hidden;
+
+            cursor: crosshair;
+
+            position: relative;
+
+            letter-spacing: .02em;
+
+        }
+
+
+        ::selection {
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+        }
+
+
+        /* =====================================================
+           和紙テクスチャ + 墨のにじみ
+        ====================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 9999;
+
+            opacity: .35;
+
+            background-image:
+
+                radial-gradient(
+                    circle at 30% 20%,
+                    rgba(201,169,97,.025),
+                    transparent 40%
+                ),
+
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(188,0,45,.02),
+                    transparent 45%
+                ),
+
+                repeating-conic-gradient(
+                    from 0deg,
+                    rgba(255,255,255,.012) 0deg,
+                    rgba(0,0,0,.015) 1deg,
+                    rgba(255,255,255,.008) 2deg,
+                    rgba(0,0,0,.008) 3deg
+                );
+
+            mix-blend-mode: overlay;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 9998;
+
+            background:
+
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0px,
+                    transparent 3px,
+                    rgba(201,169,97,.012) 4px,
+                    transparent 5px
+                );
+
+            mix-blend-mode: screen;
+
+        }
+
+
+        /* =====================================================
+           墨線 — ink scanline
+        ====================================================== */
+
+        .ink-line {
+
+            position: fixed;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 1px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent 0%,
+                    var(--kin) 20%,
+                    var(--kin-bright) 50%,
+                    var(--kin) 80%,
+                    transparent 100%
+                );
+
+            opacity: .25;
+
+            pointer-events: none;
+
+            z-index: 9000;
+
+            animation: ink-fall 10s linear infinite;
+
+        }
+
+
+        @keyframes ink-fall {
+
+            0% {
+                top: -5%;
+            }
+
+            100% {
+                top: 105%;
+            }
+
+        }
+
+
+        /* =====================================================
+           アニメーション
+        ====================================================== */
+
+        @keyframes glitch-shift {
+
+            0% {
+                transform: translate(0, 0) skewX(0deg);
+                clip-path: inset(0 0 0 0);
+            }
+
+            5% {
+                transform: translate(-2px, 2px) skewX(2deg);
+                clip-path: inset(10% 0 80% 0);
+            }
+
+            10% {
+                transform: translate(3px, -1px) skewX(-2deg);
+                clip-path: inset(40% 0 40% 0);
+            }
+
+            15% {
+                transform: translate(-1px, -3px) skewX(0deg);
+                clip-path: inset(70% 0 10% 0);
+            }
+
+            20% {
+                transform: translate(0, 0) skewX(0deg);
+                clip-path: inset(0 0 0 0);
+            }
+
+            100% {
+                transform: translate(0, 0) skewX(0deg);
+                clip-path: inset(0 0 0 0);
+            }
+
+        }
+
+
+        @keyframes glitch-clip {
+
+            0%, 100% { clip-path: inset(0 0 0 0); }
+            10% { clip-path: inset(20% 0 60% 0); }
+            20% { clip-path: inset(80% 0 10% 0); }
+            30% { clip-path: inset(40% 0 30% 0); }
+            40% { clip-path: inset(10% 0 90% 0); }
+            50% { clip-path: inset(0 0 0 0); }
+
+        }
+
+
+        @keyframes ensō-draw {
+
+            0% {
+                stroke-dashoffset: 1200;
+            }
+
+            70% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+            }
+
+        }
+
+
+        @keyframes ensō-breathe {
+
+            0%, 100% {
+                opacity: .8;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.015);
+            }
+
+        }
+
+
+        @keyframes float-slow {
+
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-16px) rotate(2deg);
+            }
+
+        }
+
+
+        @keyframes rotate-slow {
+
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        @keyframes sakura-fall {
+
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: .6;
+            }
+
+            90% {
+                opacity: .6;
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(60px) rotate(360deg);
+                opacity: 0;
+            }
+
+        }
+
+
+        @keyframes gold-pulse {
+
+            0%, 100% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: .9;
+            }
+
+        }
+
+
+        /* =====================================================
+           桜の花びら
+        ====================================================== */
+
+        .sakura-field {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            overflow: hidden;
+
+        }
+
+
+        .petal {
+
+            position: absolute;
+
+            width: 10px;
+
+            height: 10px;
+
+            background: var(--sakura);
+
+            border-radius: 50% 0 50% 50%;
+
+            opacity: .4;
+
+            animation: sakura-fall linear infinite;
+
+        }
+
+
+        .petal:nth-child(1) {
+            left: 8%;
+            animation-duration: 18s;
+            animation-delay: 0s;
+            width: 8px; height: 8px;
+        }
+
+        .petal:nth-child(2) {
+            left: 22%;
+            animation-duration: 24s;
+            animation-delay: 3s;
+            width: 6px; height: 6px;
+        }
+
+        .petal:nth-child(3) {
+            left: 45%;
+            animation-duration: 21s;
+            animation-delay: 6s;
+            width: 10px; height: 10px;
+        }
+
+        .petal:nth-child(4) {
+            left: 68%;
+            animation-duration: 26s;
+            animation-delay: 2s;
+            width: 7px; height: 7px;
+        }
+
+        .petal:nth-child(5) {
+            left: 82%;
+            animation-duration: 19s;
+            animation-delay: 8s;
+            width: 9px; height: 9px;
+        }
+
+        .petal:nth-child(6) {
+            left: 92%;
+            animation-duration: 28s;
+            animation-delay: 5s;
+            width: 5px; height: 5px;
+        }
+
+
+        /* =====================================================
+           ナビゲーション
+        ====================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            background: rgba(10,10,10,.88);
+
+            border-bottom: 1px solid var(--border-gold);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+
+            padding: 0 clamp(16px, 4vw, 60px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            height: 68px;
+
+        }
+
+
+        .nav-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-weight: 500;
+
+            font-size: 14px;
+
+            letter-spacing: .15em;
+
+            color: var(--washi);
+
+            text-decoration: none;
+
+        }
+
+
+        .nav-logo {
+
+            width: 30px;
+            height: 30px;
+
+            object-fit: contain;
+
+            filter: invert(1) sepia(.4) hue-rotate(-10deg) saturate(.8);
+
+        }
+
+
+        .nav-hanko {
+
+            width: 26px;
+            height: 26px;
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+            display: grid;
+
+            place-items: center;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            border-radius: 2px;
+
+            box-shadow: 0 0 12px rgba(188,0,45,.4);
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 32px;
+
+            align-items: center;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 11px;
+
+            letter-spacing: .18em;
+
+        }
+
+
+        .nav-links a {
+
+            color: var(--ash);
+
+            text-decoration: none;
+
+            transition: color .25s ease;
+
+            position: relative;
+
+            font-weight: 400;
+
+        }
+
+
+        .nav-links a::before {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: -6px;
+
+            left: 0;
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--kin);
+
+            transition: width .3s ease;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--washi);
+
+        }
+
+
+        .nav-links a:hover::before {
+
+            width: 100%;
+
+        }
+
+
+        /* 言語切り替え */
+
+        .lang-switch {
+
+            position: relative;
+
+            display: inline-block;
+
+        }
+
+
+        .lang-toggle {
+
+            position: absolute;
+
+            opacity: 0;
+
+            width: 0;
+            height: 0;
+
+        }
+
+
+        .lang-button {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            cursor: pointer;
+
+            padding: 8px 14px;
+
+            border: 1px solid var(--border-gold);
+
+            background: transparent;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .12em;
+
+            color: var(--washi);
+
+            transition: all .25s ease;
+
+            user-select: none;
+
+            border-radius: 2px;
+
+        }
+
+
+        .lang-button:hover {
+
+            background: var(--kin);
+
+            color: var(--sumi);
+
+            border-color: var(--kin);
+
+        }
+
+
+        .lang-dropdown {
+
+            position: absolute;
+
+            top: calc(100% + 10px);
+
+            right: 0;
+
+            min-width: 150px;
+
+            background: var(--sumi-2);
+
+            border: 1px solid var(--border-gold);
+
+            padding: 0;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform: translateY(-4px);
+
+            transition: all .25s ease;
+
+            z-index: 1001;
+
+            border-radius: 2px;
+
+            overflow: hidden;
+
+        }
+
+
+        .lang-option {
+
+            display: block;
+
+            padding: 11px 18px;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .12em;
+
+            color: var(--ash);
+
+            text-decoration: none;
+
+            transition: all .2s ease;
+
+            border-bottom: 1px solid rgba(201,169,97,.08);
+
+        }
+
+
+        .lang-option:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .lang-option:hover {
+
+            background: var(--sumi-3);
+
+            color: var(--kin-bright);
+
+        }
+
+
+        .lang-option.active {
+
+            color: var(--sumi);
+
+            background: var(--kin);
+
+        }
+
+
+        .lang-toggle:checked ~ .lang-dropdown,
+
+        .lang-switch:focus-within .lang-dropdown {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: translateY(0);
+
+        }
+
+
+        /* =====================================================
+           ヒーロー — 円相
+        ====================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 120px 0 80px;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+
+            right: -10%;
+
+            transform: translateY(-50%);
+
+            width: 800px;
+
+            height: 800px;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(188,0,45,.06),
+                    transparent 55%
+                );
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+        .hero-grid {
+
+            display: grid;
+
+            grid-template-columns: 1.15fr .85fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+            width: 100%;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .hero-text {
+
+            position: relative;
+
+        }
+
+
+        .hero-label {
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 11px;
+
+            letter-spacing: .3em;
+
+            color: var(--kin);
+
+            margin-bottom: 34px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .hero-label::before {
+
+            content: "";
+
+            width: 32px;
+
+            height: 1px;
+
+            background: var(--kin);
+
+        }
+
+
+        .hero-hanko {
+
+            display: inline-block;
+
+            width: 40px;
+
+            height: 40px;
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+            display: grid;
+
+            place-items: center;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+
+            border-radius: 2px;
+
+            box-shadow:
+
+                0 0 20px rgba(188,0,45,.35),
+
+                inset 0 0 10px rgba(0,0,0,.25);
+
+        }
+
+
+        .hero-text h1 {
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(3rem, 8vw, 6.5rem);
+
+            line-height: 1.05;
+
+            font-weight: 700;
+
+            letter-spacing: .02em;
+
+            color: var(--washi);
+
+            margin-bottom: 8px;
+
+            position: relative;
+
+        }
+
+
+        .hero-text h1 .kanji {
+
+            display: inline-block;
+
+            position: relative;
+
+        }
+
+
+        .hero-text h1 .kanji-special {
+
+            color: transparent;
+
+            -webkit-text-stroke: 2px var(--shu);
+
+            font-style: italic;
+
+            position: relative;
+
+            margin: 0 .1em;
+
+        }
+
+
+        .hero-text h1 .kanji-special::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: -.1em;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 3px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--kin),
+                    transparent
+                );
+
+            opacity: .7;
+
+        }
+
+
+        .hero-brand-en {
+
+            display: block;
+
+            margin-top: 16px;
+
+            font-family: "DM Mono", monospace;
+
+            font-size: 11px;
+
+            letter-spacing: .42em;
+
+            color: var(--kin);
+
+            text-transform: uppercase;
+
+            font-weight: 400;
+
+        }
+
+
+        .hero-copy {
+
+            margin-top: 42px;
+
+            max-width: 560px;
+
+            font-family: "Noto Sans JP", sans-serif;
+
+            font-size: 15px;
+
+            line-height: 2.1;
+
+            color: var(--ash);
+
+            padding-left: 22px;
+
+            border-left: 2px solid var(--shu);
+
+            font-weight: 300;
+
+        }
+
+
+        .hero-copy strong {
+
+            color: var(--washi);
+
+            font-weight: 500;
+
+            position: relative;
+
+        }
+
+
+        .hero-copy strong::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: -2px;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 1px;
+
+            background: var(--kin);
+
+            opacity: .6;
+
+        }
+
+
+        .hero-actions {
+
+            display: flex;
+
+            gap: 16px;
+
+            margin-top: 44px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 14px 28px;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 11px;
+
+            letter-spacing: .18em;
+
+            text-decoration: none;
+
+            border: 1px solid var(--border-gold);
+
+            background: transparent;
+
+            color: var(--washi);
+
+            transition: all .3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            border-radius: 2px;
+
+            font-weight: 400;
+
+        }
+
+
+        .button::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -100%;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: var(--kin);
+
+            transition: left .35s ease;
+
+            z-index: -1;
+
+        }
+
+
+        .button:hover::before {
+
+            left: 0;
+
+        }
+
+
+        .button:hover {
+
+            color: var(--sumi);
+
+            border-color: var(--kin);
+
+        }
+
+
+        .button-primary {
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+            border-color: var(--shu);
+
+            box-shadow: 0 0 25px rgba(188,0,45,.3);
+
+        }
+
+
+        .button-primary::before {
+
+            background: var(--kin);
+
+        }
+
+
+        .button-primary:hover {
+
+            color: var(--sumi);
+
+            border-color: var(--kin);
+
+        }
+
+
+        /* 円相ビジュアル */
+
+        .hero-art {
+
+            position: relative;
+
+            min-height: 600px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .ensō-container {
+
+            position: relative;
+
+            width: min(520px, 82vw);
+
+            aspect-ratio: 1;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .ensō-svg {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            animation: ensō-breathe 8s ease-in-out infinite;
+
+        }
+
+
+        .ensō-svg circle {
+
+            fill: none;
+
+            stroke: var(--kin);
+
+            stroke-width: 4;
+
+            stroke-linecap: round;
+
+            stroke-dasharray: 1200;
+
+            stroke-dashoffset: 1200;
+
+            animation: ensō-draw 4s cubic-bezier(.6,.05,.3,1) forwards;
+
+            filter: drop-shadow(0 0 20px rgba(201,169,97,.3));
+
+        }
+
+
+        .ensō-svg circle.inner {
+
+            stroke: var(--shu);
+
+            stroke-width: 1.5;
+
+            stroke-dasharray: 800;
+
+            stroke-dashoffset: 800;
+
+            animation: ensō-draw 5s cubic-bezier(.6,.05,.3,1) 1s forwards;
+
+            opacity: .5;
+
+            filter: drop-shadow(0 0 12px rgba(188,0,45,.4));
+
+        }
+
+
+        .ensō-kanji {
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(5rem, 12vw, 9rem);
+
+            font-weight: 700;
+
+            color: var(--washi);
+
+            letter-spacing: .05em;
+
+            text-shadow:
+
+                2px 0 0 rgba(188,0,45,.5),
+
+                -2px 0 0 rgba(201,169,97,.4);
+
+            animation: glitch-shift 7s infinite;
+
+            z-index: 3;
+
+            line-height: 1;
+
+        }
+
+
+        .ensō-caption {
+
+            position: absolute;
+
+            bottom: 5%;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-family: "DM Mono", monospace;
+
+            font-size: 9px;
+
+            letter-spacing: .35em;
+
+            color: var(--kin);
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+
+            opacity: .7;
+
+        }
+
+
+        /* 縦書き */
+
+        .tategaki-side {
+
+            position: absolute;
+
+            top: 50%;
+
+            right: -50px;
+
+            transform: translateY(-50%);
+
+            writing-mode: vertical-rl;
+
+            text-orientation: upright;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 13px;
+
+            letter-spacing: .35em;
+
+            color: var(--kin);
+
+            opacity: .75;
+
+            padding: 20px 8px;
+
+            border-left: 1px solid var(--border-gold);
+
+            border-right: 1px solid var(--border-gold);
+
+        }
+
+
+        /* =====================================================
+           マーキー — 墨帯
+        ====================================================== */
+
+        .marquee {
+
+            border-top: 1px solid var(--border-gold);
+
+            border-bottom: 1px solid var(--border-gold);
+
+            padding: 22px 0;
+
+            overflow: hidden;
+
+            background: var(--sumi-2);
+
+            position: relative;
+
+        }
+
+
+        .marquee::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 50%,
+                    rgba(188,0,45,.05),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 50%,
+                    rgba(201,169,97,.05),
+                    transparent 30%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .marquee-track {
+
+            display: inline-flex;
+
+            gap: 44px;
+
+            animation: marquee 26s linear infinite;
+
+            font-family: "Shippori Mincho", "DM Mono", monospace;
+
+            font-size: 13px;
+
+            letter-spacing: .22em;
+
+            white-space: nowrap;
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+        .marquee-track span {
+
+            color: var(--ash);
+
+            position: relative;
+
+            transition: color .3s ease;
+
+        }
+
+
+        .marquee-track span::before {
+
+            content: "「";
+
+            color: var(--shu);
+
+            margin-right: 6px;
+
+            opacity: .8;
+
+        }
+
+
+        .marquee-track span::after {
+
+            content: "」";
+
+            color: var(--shu);
+
+            margin-left: 6px;
+
+            opacity: .8;
+
+        }
+
+
+        .marquee-track span:nth-child(3n) {
+
+            color: var(--kin);
+
+        }
+
+
+        @keyframes marquee {
+
+            to {
+                transform: translateX(-50%);
+            }
+
+        }
+
+
+        /* =====================================================
+           セクション
+        ====================================================== */
+
+        section {
+
+            padding: 140px 0;
+
+            position: relative;
+
+        }
+
+
+        section::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: min(80%, 900px);
+
+            height: 1px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--kin-faint),
+                    var(--kin),
+                    var(--kin-faint),
+                    transparent
+                );
+
+            opacity: .6;
+
+        }
+
+
+        section:last-of-type::after {
+
+            display: none;
+
+        }
+
+
+        .container {
+
+            width: min(calc(100% - 40px), var(--max-width));
+
+            margin: auto;
+
+            position: relative;
+
+        }
+
+
+        .section-head {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 20px;
+
+            margin-bottom: 44px;
+
+        }
+
+
+        .section-hanko {
+
+            flex-shrink: 0;
+
+            width: 52px;
+            height: 52px;
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+            display: grid;
+
+            place-items: center;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 26px;
+
+            font-weight: 700;
+
+            border-radius: 3px;
+
+            box-shadow:
+
+                0 0 20px rgba(188,0,45,.35),
+
+                inset 0 0 12px rgba(0,0,0,.3);
+
+            position: relative;
+
+        }
+
+
+        .section-hanko::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 3px;
+
+            border: 1px solid rgba(244,239,228,.35);
+
+            border-radius: 1px;
+
+        }
+
+
+        .section-label {
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .3em;
+
+            color: var(--kin);
+
+            text-transform: uppercase;
+
+            padding-top: 14px;
+
+            font-weight: 400;
+
+        }
+
+
+        .section-title {
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(2rem, 5vw, 4.5rem);
+
+            line-height: 1.2;
+
+            font-weight: 700;
+
+            letter-spacing: .03em;
+
+            margin-bottom: 40px;
+
+            color: var(--washi);
+
+            position: relative;
+
+        }
+
+
+        .section-title .accent {
+
+            color: transparent;
+
+            -webkit-text-stroke: 1.5px var(--kin);
+
+            font-style: italic;
+
+            padding: 0 .15em;
+
+        }
+
+
+        .section-title .strike {
+
+            text-decoration: line-through;
+
+            text-decoration-color: var(--shu);
+
+            text-decoration-thickness: 3px;
+
+            text-underline-offset: 8px;
+
+        }
+
+
+        .section-title .brush {
+
+            position: relative;
+
+            padding: 0 .2em;
+
+        }
+
+
+        .section-title .brush::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: .1em;
+
+            left: 0;
+
+            width: 100%;
+
+            height: .35em;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--shu) 30%,
+                    var(--shu) 70%,
+                    transparent
+                );
+
+            opacity: .25;
+
+            z-index: -1;
+
+        }
+
+
+        .section-intro {
+
+            font-family: "Noto Sans JP", sans-serif;
+
+            font-size: 15px;
+
+            line-height: 2.1;
+
+            color: var(--ash);
+
+            max-width: 720px;
+
+            margin-bottom: 70px;
+
+            padding-left: 22px;
+
+            border-left: 2px solid var(--kin);
+
+            font-weight: 300;
+
+        }
+
+
+        /* =====================================================
+           領域 — 金継ぎグリッド
+        ====================================================== */
+
+        .domains {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 0;
+
+            position: relative;
+
+            border: 1px solid var(--border-gold);
+
+            background: var(--sumi-2);
+
+        }
+
+
+        .domain {
+
+            padding: 48px 32px;
+
+            min-height: 340px;
+
+            position: relative;
+
+            border-right: 1px solid var(--border-gold);
+
+            border-bottom: 1px solid var(--border-gold);
+
+            transition: all .4s ease;
+
+            cursor: crosshair;
+
+            overflow: hidden;
+
+        }
+
+
+        .domain::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(201,169,97,.04),
+                    transparent 50%
+                );
+
+            opacity: 0;
+
+            transition: opacity .4s ease;
+
+            pointer-events: none;
+
+        }
+
+
+        .domain:hover::before {
+
+            opacity: 1;
+
+        }
+
+
+        .domain:nth-child(4n) {
+
+            border-right: none;
+
+        }
+
+
+        .domain:nth-last-child(-n+4) {
+
+            border-bottom: none;
+
+        }
+
+
+        .domain:hover {
+
+            background: var(--sumi-3);
+
+        }
+
+
+        .domain:hover::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    var(--kin),
+                    var(--kin-bright),
+                    var(--kin)
+                );
+
+            animation: gold-pulse 2s ease-in-out infinite;
+
+        }
+
+
+        .domain-hanko {
+
+            position: absolute;
+
+            top: 28px;
+
+            right: 28px;
+
+            width: 40px;
+
+            height: 40px;
+
+            background: var(--sumi);
+
+            color: var(--shu);
+
+            display: grid;
+
+            place-items: center;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            border: 1px solid var(--shu);
+
+            border-radius: 2px;
+
+            transition: all .3s ease;
+
+        }
+
+
+        .domain:hover .domain-hanko {
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+        }
+
+
+        .domain-symbol {
+
+            font-size: 52px;
+
+            margin-bottom: 40px;
+
+            color: var(--kin);
+
+            opacity: .7;
+
+            font-weight: 300;
+
+            line-height: 1;
+
+            transition: all .3s ease;
+
+        }
+
+
+        .domain:hover .domain-symbol {
+
+            opacity: 1;
+
+            transform: translateY(-4px);
+
+        }
+
+
+        .domain h3 {
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            letter-spacing: .08em;
+
+            margin-bottom: 16px;
+
+            color: var(--washi);
+
+            line-height: 1.3;
+
+        }
+
+
+        .domain p {
+
+            font-family: "Noto Sans JP", sans-serif;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+            color: var(--ash);
+
+            font-weight: 300;
+
+        }
+
+
+        /* =====================================================
+           概要 — 和紙 + 墨
+        ====================================================== */
+
+        .about {
+
+            background: var(--sumi);
+
+        }
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1.15fr;
+
+            gap: 80px;
+
+            align-items: center;
+
+        }
+
+
+        .about-visual {
+
+            min-height: 560px;
+
+            position: relative;
+
+            background: var(--sumi-2);
+
+            border: 1px solid var(--border-gold);
+
+            overflow: hidden;
+
+            border-radius: 3px;
+
+        }
+
+
+        .about-visual::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(188,0,45,.12),
+                    transparent 45%
+                ),
+
+                radial-gradient(
+                    circle at 70% 70%,
+                    rgba(30,58,95,.18),
+                    transparent 50%
+                ),
+
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(201,169,97,.06),
+                    transparent 55%
+                );
+
+        }
+
+
+        .about-visual::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background: repeating-linear-gradient(
+                45deg,
+                transparent 0px,
+                transparent 30px,
+                rgba(201,169,97,.03) 31px,
+                transparent 32px
+            );
+
+        }
+
+
+        .about-kanji-bg {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: clamp(8rem, 22vw, 18rem);
+
+            font-weight: 700;
+
+            color: transparent;
+
+            -webkit-text-stroke: 1px var(--kin);
+
+            opacity: .25;
+
+            animation: float-slow 12s ease-in-out infinite;
+
+            white-space: nowrap;
+
+            letter-spacing: -.02em;
+
+        }
+
+
+        .about-kintsugi {
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        .about-kintsugi svg {
+
+            width: 100%;
+            height: 100%;
+
+        }
+
+
+        .about-kintsugi path {
+
+            fill: none;
+
+            stroke: var(--kin);
+
+            stroke-width: .8;
+
+            opacity: .5;
+
+            filter: drop-shadow(0 0 4px rgba(201,169,97,.4));
+
+        }
+
+
+        .about-text h2 {
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(2rem, 4.2vw, 4.2rem);
+
+            line-height: 1.25;
+
+            font-weight: 700;
+
+            letter-spacing: .02em;
+
+            margin-bottom: 32px;
+
+            color: var(--washi);
+
+        }
+
+
+        .about-text h2 .highlight {
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+            padding: 0 14px;
+
+            display: inline-block;
+
+            border-radius: 2px;
+
+            box-shadow: 0 0 20px rgba(188,0,45,.35);
+
+        }
+
+
+        .about-text h2 .gold-underline {
+
+            position: relative;
+
+            padding-bottom: 6px;
+
+        }
+
+
+        .about-text h2 .gold-underline::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 2px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--kin),
+                    transparent
+                );
+
+        }
+
+
+        .about-text p {
+
+            font-family: "Noto Sans JP", sans-serif;
+
+            font-size: 15px;
+
+            line-height: 2.2;
+
+            color: var(--ash);
+
+            margin-bottom: 24px;
+
+            font-weight: 300;
+
+        }
+
+
+        .about-text p strong {
+
+            color: var(--kin);
+
+            font-weight: 500;
+
+            position: relative;
+
+        }
+
+
+        /* =====================================================
+           作品 — 墨ブロック
+        ====================================================== */
+
+        .work {
+
+            background: var(--sumi);
+
+        }
+
+
+        .project {
+
+            margin-bottom: 48px;
+
+            border: 1px solid var(--border-gold);
+
+            background: var(--sumi-2);
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            position: relative;
+
+            transition: all .4s ease;
+
+            border-radius: 3px;
+
+            overflow: hidden;
+
+        }
+
+
+        .project::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 1px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--kin),
+                    transparent
+                );
+
+            opacity: .6;
+
+            z-index: 5;
+
+        }
+
+
+        .project:hover {
+
+            border-color: var(--kin);
+
+            box-shadow:
+
+                0 0 40px rgba(201,169,97,.12),
+
+                inset 0 0 40px rgba(201,169,97,.03);
+
+        }
+
+
+        .project-visual {
+
+            min-height: 440px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: var(--sumi);
+
+        }
+
+
+        .project-visual img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: grayscale(100%) contrast(1.15) sepia(.15);
+
+            transition: all .7s ease;
+
+        }
+
+
+        .project:hover .project-visual img {
+
+            filter: grayscale(0%) contrast(1.05) sepia(.05) saturate(1.1);
+
+            transform: scale(1.04);
+
+        }
+
+
+        .project-visual::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(188,0,45,.1),
+                    transparent 40%,
+                    rgba(201,169,97,.08) 70%,
+                    transparent
+                );
+
+            z-index: 1;
+
+            pointer-events: none;
+
+        }
+
+
+        .project-visual::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                transparent 5px,
+                rgba(0,0,0,.25) 6px
+            );
+
+            z-index: 2;
+
+            pointer-events: none;
+
+            opacity: .4;
+
+        }
+
+
+        .project-info {
+
+            padding: clamp(36px, 5vw, 68px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            position: relative;
+
+        }
+
+
+        .project-tag {
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .25em;
+
+            color: var(--kin);
+
+            margin-bottom: 24px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .project-tag::before {
+
+            content: "";
+
+            width: 24px;
+
+            height: 1px;
+
+            background: var(--kin);
+
+        }
+
+
+        .project-info h3 {
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(2rem, 4vw, 3.8rem);
+
+            letter-spacing: .02em;
+
+            line-height: 1.1;
+
+            font-weight: 700;
+
+            margin-bottom: 24px;
+
+            color: var(--washi);
+
+        }
+
+
+        .project-info h3 .en-sub {
+
+            display: block;
+
+            font-family: "DM Mono", monospace;
+
+            font-size: 11px;
+
+            letter-spacing: .3em;
+
+            color: var(--kin);
+
+            margin-top: 8px;
+
+            font-weight: 400;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .project-info p {
+
+            font-family: "Noto Sans JP", sans-serif;
+
+            font-size: 14px;
+
+            line-height: 2.1;
+
+            color: var(--ash);
+
+            margin-bottom: 30px;
+
+            font-weight: 300;
+
+        }
+
+
+        .tech {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 32px;
+
+        }
+
+
+        .tech span {
+
+            border: 1px solid var(--border-gold);
+
+            padding: 6px 14px;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .12em;
+
+            color: var(--kin);
+
+            background: var(--sumi);
+
+            border-radius: 2px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .project-links {
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .project-links .button {
+
+            padding: 12px 20px;
+
+            font-size: 10px;
+
+        }
+
+
+        .project-logo-badge {
+
+            position: absolute;
+
+            bottom: 20px;
+
+            left: 20px;
+
+            width: 76px;
+            height: 76px;
+
+            object-fit: contain;
+
+            z-index: 3;
+
+            padding: 10px;
+
+            background: rgba(10,10,10,.7);
+
+            border: 1px solid var(--border-gold);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            filter: none !important;
+
+            border-radius: 3px;
+
+        }
+
+
+        .project:hover .project-logo-badge {
+
+            border-color: var(--kin);
+
+        }
+
+
+        .project.project-wide .project-visual {
+
+            min-height: 500px;
+
+        }
+
+
+        /* =====================================================
+           花 — 縦書き対話
+        ====================================================== */
+
+        .hana {
+
+            background: var(--sumi-2);
+
+            position: relative;
+
+        }
+
+
+        .hana-grid {
+
+            display: grid;
+
+            grid-template-columns: 1.1fr 1fr;
+
+            gap: 80px;
+
+            align-items: center;
+
+        }
+
+
+        .hana-copy .tategaki-title {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 30px;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .hana-vertical {
+
+            writing-mode: vertical-rl;
+
+            text-orientation: upright;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 14px;
+
+            letter-spacing: .4em;
+
+            color: var(--kin);
+
+            padding: 10px 4px;
+
+            border-right: 1px solid var(--border-gold);
+
+            height: 160px;
+
+        }
+
+
+        .hana-copy h2 {
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(3rem, 7vw, 6.5rem);
+
+            line-height: 1;
+
+            letter-spacing: .02em;
+
+            font-weight: 700;
+
+            color: var(--washi);
+
+            position: relative;
+
+        }
+
+
+        .hana-copy h2 .word {
+
+            display: block;
+
+        }
+
+
+        .hana-copy h2 .word-2 {
+
+            color: transparent;
+
+            -webkit-text-stroke: 2.5px var(--shu);
+
+            font-style: italic;
+
+            margin-left: .3em;
+
+            position: relative;
+
+        }
+
+
+        .hana-copy h2 .word-2::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: .05em;
+            left: -.1em;
+
+            width: 120%;
+            height: 2px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--kin),
+                    transparent
+                );
+
+            opacity: .7;
+
+        }
+
+
+        .hana-copy p {
+
+            font-family: "Noto Sans JP", sans-serif;
+
+            font-size: 15px;
+
+            line-height: 2.2;
+
+            color: var(--ash);
+
+            margin-bottom: 22px;
+
+            font-weight: 300;
+
+        }
+
+
+        .hana-copy p strong {
+
+            color: var(--washi);
+
+            font-weight: 500;
+
+            position: relative;
+
+            padding: 0 4px;
+
+        }
+
+
+        .hana-copy p strong::before {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 2px;
+            left: 0;
+
+            width: 100%;
+            height: 6px;
+
+            background: rgba(188,0,45,.35);
+
+            z-index: -1;
+
+        }
+
+
+        .hana-image {
+
+            min-height: 540px;
+
+            position: relative;
+
+            border: 1px solid var(--border-gold);
+
+            background: var(--sumi);
+
+            overflow: hidden;
+
+            border-radius: 3px;
+
+        }
+
+
+        .hana-image::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(201,169,97,.15),
+                    transparent 45%,
+                    rgba(188,0,45,.15)
+                );
+
+            z-index: 1;
+
+            mix-blend-mode: screen;
+
+            pointer-events: none;
+
+        }
+
+
+        .hana-image::after {
+
+            content: "花";
+
+            position: absolute;
+
+            top: 16px;
+            right: 16px;
+
+            font-family: "Shippori Mincho", serif;
+
+            font-size: 32px;
+
+            color: var(--shu);
+
+            background: rgba(10,10,10,.6);
+
+            width: 56px;
+            height: 56px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--shu);
+
+            border-radius: 3px;
+
+            z-index: 3;
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+        }
+
+
+        .hana-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: contrast(1.15) saturate(.85) sepia(.15);
+
+            transition: filter .5s ease;
+
+        }
+
+
+        .hana-image:hover img {
+
+            filter: contrast(1.15) saturate(1) sepia(0);
+
+        }
+
+
+        /* =====================================================
+           哲学 — 虚空
+        ====================================================== */
+
+        .philosophy {
+
+            text-align: center;
+
+            padding: 200px 0;
+
+            background: var(--sumi);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .philosophy::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 900px;
+            height: 900px;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(201,169,97,.04),
+                    transparent 60%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .philosophy-mark {
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .35em;
+
+            color: var(--shu);
+
+            margin-bottom: 50px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .philosophy-mark::before,
+        .philosophy-mark::after {
+
+            content: "";
+
+            width: 30px;
+            height: 1px;
+
+            background: var(--shu);
+
+        }
+
+
+        .philosophy h2 {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: clamp(2rem, 5.5vw, 4.8rem);
+
+            line-height: 1.35;
+
+            letter-spacing: .04em;
+
+            font-weight: 700;
+
+            color: var(--washi);
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+        .philosophy h2 .fragment {
+
+            display: block;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .philosophy h2 .fragment-1 {
+
+            color: var(--washi);
+
+        }
+
+
+        .philosophy h2 .fragment-2 {
+
+            color: transparent;
+
+            -webkit-text-stroke: 2px var(--kin);
+
+            font-style: italic;
+
+        }
+
+
+        .philosophy h2 .fragment-3 {
+
+            background: var(--shu);
+
+            color: var(--washi);
+
+            display: inline-block;
+
+            padding: 4px 20px;
+
+            border-radius: 2px;
+
+            box-shadow: 0 0 40px rgba(188,0,45,.4);
+
+        }
+
+
+        /* =====================================================
+           フッター — 奥付
+        ====================================================== */
+
+        footer {
+
+            border-top: 1px solid var(--kin);
+
+            padding: 70px 0 40px;
+
+            background: var(--sumi-2);
+
+            position: relative;
+
+        }
+
+
+        footer::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 100px;
+            height: 1px;
+
+            background: var(--shu);
+
+        }
+
+
+        .footer-grid {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 40px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 50px;
+
+        }
+
+
+        .footer-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            font-family: "Shippori Mincho", "Noto Serif JP", serif;
+
+            font-size: 15px;
+
+            letter-spacing: .18em;
+
+            color: var(--washi);
+
+            font-weight: 500;
+
+        }
+
+
+        .footer-logo {
+
+            width: 42px;
+            height: 42px;
+
+            object-fit: contain;
+
+            filter: invert(1) sepia(.4) hue-rotate(-10deg) saturate(.8);
+
+        }
+
+
+        .footer-sub {
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 11px;
+
+            color: var(--kin);
+
+            letter-spacing: .25em;
+
+            margin-top: 12px;
+
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            gap: 28px;
+
+            flex-wrap: wrap;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 10px;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .footer-links a {
+
+            color: var(--ash);
+
+            text-decoration: none;
+
+            transition: color .25s ease;
+
+        }
+
+
+        .footer-links a:hover {
+
+            color: var(--kin);
+
+        }
+
+
+        .copyright {
+
+            border-top: 1px solid var(--border-gold);
+
+            padding-top: 24px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-family: "DM Mono", "Noto Sans JP", monospace;
+
+            font-size: 9px;
+
+            letter-spacing: .2em;
+
+            color: var(--ash-dim);
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* =====================================================
+           レスポンシブ
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .hana-grid,
+            .project {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .hero-art {
+
+                min-height: 440px;
+
+                order: -1;
+
+            }
+
+
+            .ensō-container {
+
+                width: min(420px, 78vw);
+
+            }
+
+
+            .tategaki-side {
+
+                display: none;
+
+            }
+
+
+            .domains {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+            .domain:nth-child(2n) {
+
+                border-right: none;
+
+            }
+
+
+            .project-visual {
+
+                min-height: 380px;
+
+            }
+
+
+            .hana-image {
+
+                min-height: 440px;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            section {
+
+                padding: 100px 0;
+
+            }
+
+
+            .hero {
+
+                padding: 100px 0 60px;
+
+            }
+
+
+            .hero-text h1 {
+
+                font-size: 2.8rem;
+
+            }
+
+
+            .hero-art {
+
+                min-height: 340px;
+
+            }
+
+
+            .ensō-container {
+
+                width: min(320px, 82vw);
+
+            }
+
+
+            .ensō-kanji {
+
+                font-size: 4rem;
+
+            }
+
+
+            .domains {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .domain {
+
+                border-right: none;
+
+                border-bottom: 1px solid var(--border-gold);
+
+                min-height: 280px;
+
+            }
+
+
+            .domain:nth-last-child(-n+4) {
+
+                border-bottom: 1px solid var(--border-gold);
+
+            }
+
+
+            .domain:last-child {
+
+                border-bottom: none;
+
+            }
+
+
+            .footer-grid,
+            .copyright {
+
+                flex-direction: column;
+
+            }
+
+
+            .project-links {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+
+            .project-logo-badge {
+
+                width: 60px;
+                height: 60px;
+
+                bottom: 14px;
+                left: 14px;
+
+                padding: 8px;
+
+            }
+
+
+            .hana-vertical {
+
+                height: 120px;
+
+                font-size: 12px;
+
+            }
+
+
+            .hana-copy h2 {
+
+                font-size: 2.4rem;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           アクセシビリティ
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration: 0.01ms !important;
+
+                animation-iteration-count: 1 !important;
+
+                transition-duration: 0.01ms !important;
+
+            }
+
+
+            .petal {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         墨線
+    ====================================================== -->
+
+    <div class="ink-line"></div>
+
+
+    <!-- =====================================================
+         桜の花びら
+    ====================================================== -->
+
+    <div class="sakura-field" aria-hidden="true">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ナビゲーション
+    ====================================================== -->
+
+    <nav>
+
+        <a href="#top" class="nav-brand">
+
+            <img
+                src="assets/DHA_logo_h.png"
+                alt="DHA®"
+                class="nav-logo"
+            >
+
+            <span class="nav-hanko">花</span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="#about">[概要]</a>
+
+            <a href="#domains">[領域]</a>
+
+            <a href="#work">[作品]</a>
+
+            <a href="#hana">[花]</a>
+
+            <a
+                href="https://github.com/DigitalHanaArts"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [GitHub]
+            </a>
+
+        </div>
+
+
+        <div class="lang-switch">
+
+            <input type="checkbox" id="lang-toggle" class="lang-toggle">
+
+            <label for="lang-toggle" class="lang-button">
+                [JA] ▾
+            </label>
+
+            <div class="lang-dropdown" role="menu">
+
+                <a href="https://digitalhanaarts.github.io/dha/" class="lang-option">[EN]</a>
+
+                <a href="https://digitalhanaarts.github.io/dha-ja/" class="lang-option active">[日本語]</a>
+
+                <a href="https://digitalhanaarts.github.io/dha-zh/" class="lang-option">[中文]</a>
+
+                <a href="https://digitalhanaarts.github.io/dha-per/" class="lang-option">[فارسی]</a>
+
+                <a href="https://digitalhanaarts.github.io/it_dha/" class="lang-option">[IT]</a>
+
+                <a href="https://digitalhanaarts.github.io/dha_ar/" class="lang-option">[AR]</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         本体
+    ====================================================== -->
+
+    <main id="top">
+
+
+        <!-- =================================================
+             ヒーロー — 円相
+        ================================================== -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-grid">
+
+                    <div class="hero-text">
+
+                        <div class="hero-label">
+                            計算的創造性 · COMPUTATIONAL CREATIVITY
+                        </div>
+
+                        <h1>
+
+                            <span class="kanji">デジタル</span>
+
+                            <span class="kanji kanji-special">花</span>
+
+                            <span class="kanji">芸術®</span>
+
+                        </h1>
+
+                        <span class="hero-brand-en">
+                            DIGITAL HANA ARTS®
+                        </span>
+
+                        <p class="hero-copy">
+
+                            <strong>芸術</strong>と<strong>アルゴリズム</strong>の間に、
+
+                            <strong>データ</strong>と<strong>夢</strong>の間に、
+
+                            <strong>知能</strong>と<strong>本能</strong>の間に ──
+
+                            DHAは虚空に在る。
+
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <a href="#work" class="button button-primary">
+                                [作品を観る]
+                            </a>
+
+                            <a
+                                href="https://github.com/DigitalHanaArts"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="button"
+                            >
+                                [GitHub ↗]
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-art">
+
+                        <div class="ensō-container">
+
+                            <svg class="ensō-svg" viewBox="0 0 400 400">
+
+                                <circle
+                                    cx="200"
+                                    cy="200"
+                                    r="170"
+                                    transform="rotate(-40 200 200)"
+                                />
+
+                                <circle
+                                    class="inner"
+                                    cx="200"
+                                    cy="200"
+                                    r="140"
+                                    transform="rotate(120 200 200)"
+                                />
+
+                            </svg>
+
+                            <div class="ensō-kanji">
+                                花
+                            </div>
+
+                            <div class="ensō-caption">
+                                ENSŌ · 円相 · VOID
+                            </div>
+
+                        </div>
+
+                        <div class="tategaki-side">
+                            虚空に花を咲かせる
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             マーキー — 墨帯
+        ================================================== -->
+
+        <div class="marquee">
+
+            <div class="marquee-track">
+
+                <span>芸術</span>
+                <span>データ</span>
+                <span>人工知能</span>
+                <span>ブロックチェーン</span>
+                <span>生成</span>
+                <span>計算</span>
+                <span>知能</span>
+                <span>可視化</span>
+                <span>MLABCHAIN</span>
+                <span>間</span>
+                <span>侘寂</span>
+                <span>金継ぎ</span>
+
+                <span>芸術</span>
+                <span>データ</span>
+                <span>人工知能</span>
+                <span>ブロックチェーン</span>
+                <span>生成</span>
+                <span>計算</span>
+                <span>知能</span>
+                <span>可視化</span>
+                <span>MLABCHAIN</span>
+                <span>間</span>
+                <span>侘寂</span>
+                <span>金継ぎ</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             概要
+        ================================================== -->
+
+        <section id="about" class="about">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-hanko">壱</div>
+
+                    <div>
+
+                        <div class="section-label">01 / THE STUDIO</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-visual">
+
+                        <div class="about-kanji-bg">
+                            侘寂
+                        </div>
+
+                        <div class="about-kintsugi">
+
+                            <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">
+
+                                <path d="M0 120 L120 200 L160 340 L280 400 L400 380"/>
+                                <path d="M80 0 L160 120 L240 180 L320 300 L400 480"/>
+                                <path d="M0 420 L140 440 L220 520 L340 480 L400 560"/>
+                                <path d="M240 0 L280 90 L360 130 L400 200"/>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-text">
+
+                        <h2>
+
+                            技術は
+
+                            <span class="highlight">素材</span>
+
+                            である。
+
+                        </h2>
+
+                        <p>
+
+                            Digital Hana Arts は、技術と芸術表現の
+
+                            <strong>狭間</strong> を探求する
+
+                            実験的な計算的創造性スタジオである。
+
+                        </p>
+
+                        <p>
+
+                            ソフトウェア、視覚システム、
+
+                            機械学習の実験、データ駆動型の作品、
+
+                            そしてブロックチェーン指向のデジタル資産を
+
+                            構築する ── すべては
+
+                            <strong>ポスト・ヒューマン</strong>
+
+                            な感性をもって。
+
+                        </p>
+
+                        <p>
+
+                            中心となる問いは、単純ではない：
+
+                            <strong>
+
+                                計算が創造の媒体となるとき、
+
+                                何が起こるのか？
+
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             領域
+        ================================================== -->
+
+        <section id="domains">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-hanko">弐</div>
+
+                    <div>
+
+                        <div class="section-label">02 / THE ECOSYSTEM</div>
+
+                    </div>
+
+                </div>
+
+
+                <h2 class="section-title">
+
+                    四つの領域。
+
+                    <span class="accent">一つの系。</span>
+
+                    <span class="strike">境界なし。</span>
+
+                </h2>
+
+                <p class="section-intro">
+
+                    DHA は単一の技術カテゴリに留まらず、
+
+                    複数の学問を横断して活動する。
+
+                    これは、解体された
+
+                    <strong style="color:var(--kin);font-weight:500;">間</strong>
+
+                    のグリッドである。
+
+                </p>
+
+
+                <div class="domains">
+
+
+                    <article class="domain">
+
+                        <div class="domain-hanko">壱</div>
+
+                        <div class="domain-symbol">◇</div>
+
+                        <h3>デジタル芸術</h3>
+
+                        <p>
+                            生成システム、アルゴリズム芸術、
+                            計算写真、そして実験的デジタルメディア。
+                        </p>
+
+                    </article>
+
+
+                    <article class="domain">
+
+                        <div class="domain-hanko">弐</div>
+
+                        <div class="domain-symbol">◌</div>
+
+                        <h3>データ科学</h3>
+
+                        <p>
+                            データマイニング、分析、可視化、
+                            統計計算、そしてデータ駆動型の発見。
+                        </p>
+
+                    </article>
+
+
+                    <article class="domain">
+
+                        <div class="domain-hanko">参</div>
+
+                        <div class="domain-symbol">◎</div>
+
+                        <h3>知能</h3>
+
+                        <p>
+                            機械学習、深層学習、
+                            コンピュータビジョン、
+                            そして生成的人工知能。
+                        </p>
+
+                    </article>
+
+
+                    <article class="domain">
+
+                        <div class="domain-hanko">肆</div>
+
+                        <div class="domain-symbol">⛓</div>
+
+                        <h3>ブロックチェーン</h3>
+
+                        <p>
+                            NFT、デジタル資産、ブロックチェーン分析、
+                            そして分散型の創造的エコシステム。
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             作品
+        ================================================== -->
+
+        <section id="work" class="work">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-hanko">参</div>
+
+                    <div>
+
+                        <div class="section-label">03 / SELECTED WORK</div>
+
+                    </div>
+
+                </div>
+
+
+                <h2 class="section-title">
+
+                    <span class="brush">画素</span>から
+
+                    <span class="accent">知能</span>へ。
+
+                </h2>
+
+
+                <!-- =========================================
+                     MLabChain
+                ========================================== -->
+
+                <div class="project project-wide">
+
+                    <div class="project-visual">
+
+                        <img
+                            src="assets/MLabChain_v3_Banner.png"
+                            alt="MLabChain — ブロックチェーン研究基盤"
+                            loading="lazy"
+                        >
+
+                        <img
+                            src="assets/mlabchain.png"
+                            alt="MLabChain ロゴ"
+                            class="project-logo-badge"
+                        >
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <span class="project-tag">ブロックチェーン プロトコル</span>
+
+                        <h3>
+
+                            MLabChain
+
+                            <span class="en-sub">
+                                Blockchain Protocol
+                            </span>
+
+                        </h3>
+
+                        <p>
+
+                            ブロックチェーン研究・工学研究のための
+
+                            基盤 ── 実験科学、分散型インフラ、
+
+                            そして検証可能な計算を結びつける。
+
+                        </p>
+
+                        <div class="tech">
+
+                            <span>Blockchain</span>
+                            <span>Distributed</span>
+                            <span>Web3</span>
+                            <span>HEP</span>
+                            <span>Research</span>
+
+                        </div>
+
+                        <div class="project-links">
+
+                            <a
+                                href="https://github.com/DigitalHanaArts/MLabChain"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="button button-primary"
+                            >
+                                [GitHub ↗]
+                            </a>
+
+                            <a
+                                href="https://gitlab.cern.ch/abavarch/labchain"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="button"
+                            >
+                                [GitLab ↗]
+                            </a>
+
+                            <a
+                                href="https://digitalhanaarts.github.io/mlc/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="button"
+                            >
+                                [Webpage ↗]
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DHA Vision -->
+
+                <div class="project">
+
+                    <div class="project-visual">
+
+                        <img
+                            src="assets/DHA_Vision.png"
+                            alt="DHA Vision"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <span class="project-tag">実験プラットフォーム</span>
+
+                        <h3>
+
+                            DHA Vision
+
+                            <span class="en-sub">
+                                Julia × Flux
+                            </span>
+
+                        </h3>
+
+                        <p>
+
+                            Julia を基盤とする計算芸術プラットフォーム。
+
+                            画像処理、機械学習、生成システムを通じて、
+
+                            写真を新たなデジタル芸術作品へと
+
+                            変換する方法を探求する。
+
+                        </p>
+
+                        <div class="tech">
+
+                            <span>Julia</span>
+                            <span>Flux</span>
+                            <span>Machine Learning</span>
+                            <span>Image Processing</span>
+                            <span>Generative Art</span>
+
+                        </div>
+
+                        <a
+                            href="https://github.com/DigitalHanaArts/DHA-Vision"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="button"
+                        >
+                            [作品を見る ↗]
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OpenSea -->
+
+                <div class="project">
+
+                    <div class="project-visual">
+
+                        <img
+                            src="assets/opensea.io.jpeg"
+                            alt="OpenSea コレクション"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <span class="project-tag">NFT コレクション</span>
+
+                        <h3>
+
+                            OpenSea
+
+                            <span class="en-sub">
+                                Collection
+                            </span>
+
+                        </h3>
+
+                        <p>
+
+                            OpenSea 上の Digital Hana Arts 公式コレクション ──
+
+                            厳選されたデジタル資産、生成芸術作品、
+
+                            そしてブロックチェーンに基づく創造の数々。
+
+                        </p>
+
+                        <div class="tech">
+
+                            <span>NFT</span>
+                            <span>Ethereum</span>
+                            <span>Digital Art</span>
+                            <span>Blockchain</span>
+                            <span>OpenSea</span>
+
+                        </div>
+
+                        <a
+                            href="https://opensea.io/Digital__Hana__Arts"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="button"
+                        >
+                            [OpenSea を見る ↗]
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             花
+        ================================================== -->
+
+        <section id="hana" class="hana">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div class="section-hanko">肆</div>
+
+                    <div>
+
+                        <div class="section-label">04 / ORIGIN</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hana-grid">
+
+                    <div class="hana-copy">
+
+                        <div class="tategaki-title">
+
+                            <div class="hana-vertical">
+                                花に出会う
+                            </div>
+
+                            <h2>
+
+                                <span class="word word-1">花に</span>
+
+                                <span class="word word-2">出会う。</span>
+
+                            </h2>
+
+                        </div>
+
+                        <p>
+
+                            Digital Hana Arts は、
+
+                            視覚的アイデンティティの中核にいる
+
+                            子猫「花」にちなんで名付けられた。
+
+                        </p>
+
+                        <p>
+
+                            彼女の存在は、
+
+                            計算に満ちた世界に
+
+                            意図的に人間的で有機的なものを
+
+                            持ち込む ──
+
+                            <strong>好奇心、個性、そして性格。</strong>
+
+                        </p>
+
+                    </div>
+
+                    <div class="hana-image">
+
+                        <img
+                            src="assets/Hana_the_kitten.jpeg"
+                            alt="花 — 子猫"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             哲学
+        ================================================== -->
+
+        <section class="philosophy">
+
+            <div class="container">
+
+                <span class="philosophy-mark">
+                    [05 / THE QUESTION]
+                </span>
+
+                <h2>
+
+                    <span class="fragment fragment-1">計算が</span>
+
+                    <span class="fragment fragment-2">創造の媒体</span>
+
+                    <span class="fragment fragment-3">となるとき、</span>
+
+                </h2>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         フッター
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <div class="footer-brand">
+
+                        <img
+                            src="assets/DHA_logo.png"
+                            alt="DHA®"
+                            class="footer-logo"
+                        >
+
+                        <span>DIGITAL HANA ARTS®</span>
+
+                    </div>
+
+                    <div class="footer-sub">
+                        芸術 × データ × 知能 × ブロックチェーン
+                    </div>
+
+                </div>
+
+                <div class="footer-links">
+
+                    <a
+                        href="https://github.com/DigitalHanaArts"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        [GitHub]
+                    </a>
+
+                    <a href="#top">[トップへ戻る ↑]</a>
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+
+                <span>© 2026 DIGITAL HANA ARTS®</span>
+
+                <span>計算を創造の媒体として</span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
